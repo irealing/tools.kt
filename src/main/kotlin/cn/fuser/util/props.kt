@@ -35,3 +35,8 @@ class IntPropProxy(prop: Properties, key: String, default: Int = -1) : BasePropP
 class FloatPropProxy(prop: Properties, key: String, default: Float = -1f) : BasePropProxy<Float>(prop, key, default) {
     override fun getValue(ref: Any?, kp: KProperty<*>): Float = prop.getProperty(key)?.toFloat() ?: default
 }
+
+// DoublePropProxy 代理Double类型
+class DoublePropProxy(prop: Properties, key: String, default: Double = 1.0) : BasePropProxy<Double>(prop, key, default) {
+    override fun getValue(ref: Any?, kp: KProperty<*>): Double = prop.getProperty(key)?.toDouble() ?: default
+}
