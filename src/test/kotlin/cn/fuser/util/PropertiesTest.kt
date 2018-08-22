@@ -8,6 +8,7 @@ class Config {
     val port: Int by prop.int("net.port", default = 2288)
     val ft: Float by prop.float("test.float32", 1f)
     val double: Double by prop.double("test.double", 2.5)
+    val timer: Long by prop.long("test.long", 9090L)
 }
 
 class PropertiesTest : TestCase() {
@@ -26,5 +27,9 @@ class PropertiesTest : TestCase() {
 
     fun testDouble() {
         assertEquals(cfg.double, 18.0)
+    }
+
+    fun testLong() {
+        assertEquals(cfg.timer, 9090)
     }
 }

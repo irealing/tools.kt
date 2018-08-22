@@ -40,3 +40,8 @@ class FloatPropProxy(prop: Properties, key: String, default: Float = -1f) : Base
 class DoublePropProxy(prop: Properties, key: String, default: Double = 1.0) : BasePropProxy<Double>(prop, key, default) {
     override fun getValue(ref: Any?, kp: KProperty<*>): Double = prop.getProperty(key)?.toDouble() ?: default
 }
+
+// LongPropProxy 代理Long类型
+class LongPropProxy(prop: Properties, key: String, default: Long = 0) : BasePropProxy<Long>(prop, key, default) {
+    override fun getValue(ref: Any?, kp: KProperty<*>): Long = prop.getProperty(key)?.toLong() ?: default
+}

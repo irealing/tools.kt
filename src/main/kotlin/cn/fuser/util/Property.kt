@@ -29,4 +29,5 @@ class Property private constructor(fileName: String) {
     fun int(key: String, default: Int = -1): PropProxy<Int> = IntPropProxy(prop, key, default)
     fun float(key: String, default: Float = -1f): PropProxy<Float> = FloatPropProxy(prop, key, default)
     fun double(key: String, default: Double = 1.0): PropProxy<Double> = DoublePropProxy(prop, key, default)
+    fun long(key: String, default: Long = 0): PropProxy<Long> = LongPropProxy(prop, key, default)
 }
