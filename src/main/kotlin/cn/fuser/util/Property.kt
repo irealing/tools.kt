@@ -1,16 +1,22 @@
 package cn.fuser.util
 
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.nio.file.Paths
 import java.util.*
 
 class Property private constructor(fileName: String) {
     private val prop = Properties()
 
     init {
-        val input = this::class.java.classLoader.getResourceAsStream(fileName)
-        if (input != null) {
-            prop.load(input)
-            input.close()
-        }
+        val cwd = System.getProperty("user.dir") ?: ""
+        val cfgFile = Paths.get(cwd, fileName).toFile()
+        val input = when {
+            cfgFile.exists() -> FileInputStream(cfgFile)
+            else -> this::class.java.classLoader.getResourceAsStream(fileName)
+        } ?: throw FileNotFoundException(fileName)
+        prop.load(input)
+        input.close()
     }
 
     companion object {
