@@ -45,3 +45,8 @@ class DoublePropProxy(prop: Properties, key: String, default: Double = 1.0) : Ba
 class LongPropProxy(prop: Properties, key: String, default: Long = 0) : BasePropProxy<Long>(prop, key, default) {
     override fun getValue(ref: Any?, kp: KProperty<*>): Long = prop.getProperty(key)?.toLong() ?: default
 }
+
+// BoolPropProxy 代理boolean类型
+class BoolPropProxy(prop: Properties, key: String, default: Boolean = false) : BasePropProxy<Boolean>(prop, key, default) {
+    override fun getValue(ref: Any?, kp: KProperty<*>): Boolean = prop.getProperty(key)?.toBoolean() ?: default
+}

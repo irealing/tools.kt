@@ -9,6 +9,7 @@ class Config {
     val ft: Float by prop.float("test.float32", 1f)
     val double: Double by prop.double("test.double", 2.5)
     val timer: Long by prop.long("test.long", 9090L)
+    var bool: Boolean by prop.bool("test.bool")
 }
 
 class PropertiesTest : TestCase() {
@@ -31,5 +32,9 @@ class PropertiesTest : TestCase() {
 
     fun testLong() {
         assertEquals(cfg.timer, 9090)
+    }
+
+    fun testBoolean() {
+        assert(cfg.bool)
     }
 }
